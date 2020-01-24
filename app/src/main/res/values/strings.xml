@@ -11,4 +11,5 @@
     <string name="male">Male</string>
     <string name="Citizen">SA Citizen</string>
     <string name="pResident">Permanent Resident</string>
+    <string name="Toast_format">please respect the format of the ID</string>
 </resources>

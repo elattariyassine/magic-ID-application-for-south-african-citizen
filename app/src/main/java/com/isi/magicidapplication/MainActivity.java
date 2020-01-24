@@ -3,10 +3,12 @@ package com.isi.magicidapplication;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -30,36 +32,53 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 String idNumber = etID.getText().toString().trim();
-                String dob = idNumber.substring(0, 6);
-                int gender = Integer.parseInt(Character.toString(idNumber.charAt(6)));
-                String sGender;
+                Log.d("eee", idNumber.toString());
 
-                if (gender < 5)
+                if (idNumber.isEmpty())
                 {
-                    sGender = getString(R.string.female);
+                    Toast.makeText(MainActivity.this, R.string.please_enter_id_number, Toast.LENGTH_SHORT).show();
+                }
+                else if (idNumber.length() < 13)
+                {
+                    Toast.makeText(MainActivity.this, R.string.Toast_format, Toast.LENGTH_SHORT).show();
+                }
+                else if (idNumber.length() > 13)
+                {
+                    Toast.makeText(MainActivity.this, R.string.Toast_format, Toast.LENGTH_SHORT).show();
                 }
                 else
                 {
-                    sGender = getString(R.string.male);
-                }
+                    String dob = idNumber.substring(0, 6);
+                    int gender = Integer.parseInt(Character.toString(idNumber.charAt(6)));
+                    String sGender;
 
-                int nationality = Integer.parseInt(Character.toString(idNumber.charAt(10)));
-                String sNationality;
+                    if (gender < 5)
+                    {
+                        sGender = getString(R.string.female);
+                    }
+                    else
+                    {
+                        sGender = getString(R.string.male);
+                    }
 
-                if (nationality == 0)
-                {
-                    sNationality = getString(R.string.Citizen);
-                }
-                else
-                {
-                    sNationality = getString(R.string.pResident);
-                }
-                String text = getString(R.string.dob) + dob + "\n" +
-                        getString(R.string.gender) + sGender + "\n" +
-                        getString(R.string.nationality) + sNationality;
-                tvResults.setText(text);
+                    int nationality = Integer.parseInt(Character.toString(idNumber.charAt(10)));
+                    String sNationality;
 
-                tvResults.setVisibility(View.VISIBLE);
+                    if (nationality == 0)
+                    {
+                        sNationality = getString(R.string.Citizen);
+                    }
+                    else
+                    {
+                        sNationality = getString(R.string.pResident);
+                    }
+                    String text = getString(R.string.dob) + dob + "\n" +
+                            getString(R.string.gender) + sGender + "\n" +
+                            getString(R.string.nationality) + sNationality;
+                    tvResults.setText(text);
+
+                    tvResults.setVisibility(View.VISIBLE);
+                }
             }
         });
 
