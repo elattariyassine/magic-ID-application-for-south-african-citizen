@@ -3,4 +3,12 @@
     <string name="please_enter_id_number">Please enter ID number</string>
     <string name="button">Button</string>
     <string name="textview">TextView</string>
+    <string name="dob">Date of Birth:</string>
+    <string name="new_line" />
+    <string name="gender">Gender:</string>
+    <string name="nationality">Nationality:</string>
+    <string name="female">Female</string>
+    <string name="male">Male</string>
+    <string name="Citizen">SA Citizen</string>
+    <string name="pResident">Permanent Resident</string>
 </resources>

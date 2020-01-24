@@ -23,6 +23,8 @@ public class MainActivity extends AppCompatActivity {
         btnSubmit = (Button) findViewById(R.id.button);
         tvResults = (TextView) findViewById(R.id.textView);
 
+        tvResults.setVisibility(View.GONE);
+
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -34,11 +36,11 @@ public class MainActivity extends AppCompatActivity {
 
                 if (gender < 5)
                 {
-                    sGender = "Female";
+                    sGender = getString(R.string.female);
                 }
                 else
                 {
-                    sGender = "Male";
+                    sGender = getString(R.string.male);
                 }
 
                 int nationality = Integer.parseInt(Character.toString(idNumber.charAt(10)));
@@ -46,15 +48,18 @@ public class MainActivity extends AppCompatActivity {
 
                 if (nationality == 0)
                 {
-                    sNationality = "SA Citizen";
+                    sNationality = getString(R.string.Citizen);
                 }
                 else
                 {
-                    sNationality = "Permanent Resident";
+                    sNationality = getString(R.string.pResident);
                 }
-                tvResults.setText("Date of Birth: " + dob + "\n" +
-                                    "Gender: " + sGender + "\n" +
-                                        "Nationality: " + sNationality);
+                String text = getString(R.string.dob) + dob + "\n" +
+                        getString(R.string.gender) + sGender + "\n" +
+                        getString(R.string.nationality) + sNationality;
+                tvResults.setText(text);
+
+                tvResults.setVisibility(View.VISIBLE);
             }
         });
 
